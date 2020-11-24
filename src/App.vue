@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld
+      msg="Welcome to Your Vue.js App"
+      :parentMethods="parentMethods"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import API from "./api"
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  methods: {
+    parentMethods(params) {
+      console.log(params);
+      API.postDate(params).then((res) => {
+        console.log(res);
+      });
+    },
+  },
+};
 </script>
 
 <style>
