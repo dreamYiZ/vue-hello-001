@@ -1,7 +1,8 @@
-const postDate = () => {
+const postDate = (data) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ data: "ok" });
+      const { type } = data;
+      resolve({ data: "ok", type });
     }, 3000);
   });
 };

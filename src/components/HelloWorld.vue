@@ -84,7 +84,10 @@
       </li>
     </ul>
 
-    <button @click="btnClick">按钮</button>
+    <button @click="btnClick('abc1')">按钮1</button>
+    <br>
+    <br>
+    <button @click="btnClick('abc2')">按钮2</button>
   </div>
 </template>
 
@@ -96,9 +99,9 @@ export default {
     parentMethods: Function,
   },
   methods: {
-    btnClick() {
-      const params = { a: 1, b: 2 };
-      this.parentMethods(params);
+    btnClick(type) {
+      const params = { a: '0', b: 'string' };
+      this.parentMethods(params, type);
     },
   },
 };

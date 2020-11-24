@@ -10,7 +10,7 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import API from "./api"
+import API from "./api";
 
 export default {
   name: "App",
@@ -18,9 +18,10 @@ export default {
     HelloWorld,
   },
   methods: {
-    parentMethods(params) {
+    parentMethods(params, type) {
       console.log(params);
-      API.postDate(params).then((res) => {
+      console.log("操作类型：", type);
+      API.postDate({ params, type }).then((res) => {
         console.log(res);
       });
     },
