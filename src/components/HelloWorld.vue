@@ -85,8 +85,8 @@
     </ul>
 
     <button @click="btnClick('abc1')">按钮1</button>
-    <br>
-    <br>
+    <br />
+    <br />
     <button @click="btnClick('abc2')">按钮2</button>
   </div>
 </template>
@@ -94,13 +94,38 @@
 <script>
 export default {
   name: "HelloWorld",
+  data() {
+    return {
+      a: 1,
+      abc2: 2,
+      abc1: 3,
+      abc: 4,
+    };
+  },
   props: {
     msg: String,
     parentMethods: Function,
   },
   methods: {
     btnClick(type) {
-      const params = { a: '0', b: 'string' };
+      //第一个按钮参数
+      const params1 = {
+        a: this.a,
+        abc: this.abc1,
+      };
+      //第二个按钮参数
+      const params2 = {
+        a: this.a,
+        abc: this.abc2,
+      };
+      let params;
+
+      if (type === "abc1") {
+        params = params1;
+      }
+      if (type === "abc2") {
+        params = params2;
+      }
       this.parentMethods(params, type);
     },
   },
